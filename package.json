@@ -1,7 +1,7 @@
 {
   "name": "task-registry-template-engine",
   "description": "collects the template engines and abstract template-engine task",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/snowyu/task-registry-template-engine.js",
   "repository": {
     "type": "git",
