@@ -16,7 +16,13 @@ module.exports  = class TemplateEngineTask
   register TemplateEngineTask
   aliases TemplateEngineTask, 'TemplateEngines'
 
-  constructor: ->return super
+  constructor: (aName, aOptions)->
+    result = super
+    unless result? or @ instanceof TemplateEngineTask
+      if isString(aName) and aName.lastIndexOf('TemplateEngine') is -1
+        aName += 'TemplateEngine'
+        result = super
+    return result
 
   defineProperty @, 'defineProperties', defineProperties
 

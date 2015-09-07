@@ -46,6 +46,12 @@ describe 'TemplateEngine', ->
     TestTemplateEngine::_executeSync.reset()
     Test1TemplateEngine::_executeSync.reset()
 
+  it 'should get the test template engine via constructor', ->
+    result = TemplateEngine 'Test'
+    expect(result).to.be.instanceOf TestTemplateEngine
+    result = TemplateEngine 'Test1'
+    expect(result).to.be.instanceOf Test1TemplateEngine
+
   it 'should get the test template engine', ->
     result = templateEngine.get 'Test'
     expect(result).to.be.instanceOf TestTemplateEngine
