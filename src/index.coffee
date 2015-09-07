@@ -1,6 +1,7 @@
 isObject        = require 'util-ex/lib/is/type/object'
 isString        = require 'util-ex/lib/is/type/string'
 extend          = require 'util-ex/lib/extend'
+defineProperty  = require 'util-ex/lib/defineProperty'
 Task            = require 'task-registry'
 register        = Task.register
 aliases         = Task.aliases
@@ -17,9 +18,13 @@ module.exports  = class TemplateEngineTask
 
   constructor: ->return super
 
+  defineProperty @, 'defineProperties', defineProperties
+
   getDefault: (aOptions)->
     # get first engine as default engine if not result
-    vEngines = getObjectKeys TemplateEngineTask
+    vEngines = []
+    TemplateEngineTask.forEachClass (cls, name)->
+      vEngines.push name
     if vEngines and vEngines.length
       result = Task.get vEngines[0], aOptions
     result
