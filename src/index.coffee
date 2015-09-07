@@ -22,11 +22,11 @@ module.exports  = class TemplateEngineTask
 
   getDefault: (aOptions)->
     # get first engine as default engine if not result
-    vEngines = []
+    vEngine = null
     TemplateEngineTask.forEachClass (cls, name)->
-      vEngines.push name
-    if vEngines and vEngines.length
-      result = Task.get vEngines[0], aOptions
+      vEngine = name
+      'brk'
+    result = Task.get vEngine, aOptions if vEngine
     result
   get: (aName, aOptions)->
     if aName
