@@ -36,10 +36,10 @@ module.exports  = class TemplateEngineTask
     result
   get: (aName, aOptions)->
     if aName
-      result = super aName, aOptions
+      result = Task.get.call @, aName, aOptions
       unless result
         aName += 'TemplateEngine'
-        result = super aName, aOptions
+        result = Task.get.call @, aName, aOptions
     result = @getDefault(aOptions) unless result
     result
   _executeSync: (aOptions)->
